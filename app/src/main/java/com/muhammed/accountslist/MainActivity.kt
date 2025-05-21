@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Scaffold
@@ -50,8 +51,8 @@ fun ListAccountStatements(
     LazyColumn(
         modifier = modifier
     ) {
-        itemsIndexed(accountStatements) { index, accountStatements ->
-            AccountCard(accountStatements, index)
+        items(accountStatements) { accountStatements ->
+            AccountCard(accountStatements)
             Divider(thickness = 10.dp)
         }
     }

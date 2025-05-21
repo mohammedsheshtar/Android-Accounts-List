@@ -25,7 +25,7 @@ import java.text.SimpleDateFormat
 
 @SuppressLint("SimpleDateFormat")
 @Composable
-fun AccountCard(accountStatement: AccountStatements, index: Int, modifier: Modifier = Modifier) {
+fun AccountCard(accountStatement: AccountStatements, modifier: Modifier = Modifier) {
 
     val typeColor = if (accountStatement.transactionType == "Deposit") DepositGreen else WithdrawRed
 
