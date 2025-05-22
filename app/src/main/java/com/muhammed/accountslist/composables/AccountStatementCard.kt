@@ -2,6 +2,7 @@ package com.muhammed.accountslist.composables
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -25,7 +26,9 @@ import java.text.SimpleDateFormat
 
 @SuppressLint("SimpleDateFormat")
 @Composable
-fun AccountCard(accountStatement: AccountStatements, modifier: Modifier = Modifier) {
+fun AccountCard(accountStatement: AccountStatements,
+                modifier: Modifier = Modifier,
+                onCardClicked: (String) -> Unit = {}) {
 
     val typeColor = if (accountStatement.transactionType == "Deposit") DepositGreen else WithdrawRed
 
@@ -37,6 +40,7 @@ fun AccountCard(accountStatement: AccountStatements, modifier: Modifier = Modifi
         {
             Column(
                 modifier = Modifier
+                    .clickable { onCardClicked(accountStatement.accountName) }
                     .fillMaxWidth()
                     .padding(12.dp)
                     .height(100.dp)

@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material3.Divider
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,29 +29,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             AccountsListTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    var accountStatementState by remember { mutableStateOf(AccountRepository.getAccountStatements()) }
-
-                    ListAccountStatements(
-                        accountStatementState,
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    AccountStatementsNavHost(modifier = Modifier.padding(innerPadding))
                 }
             }
-        }
-    }
-}
-
-@Composable
-fun ListAccountStatements(
-    accountStatements: List<AccountStatements>,
-    modifier: Modifier = Modifier) {
-
-    LazyColumn(
-        modifier = modifier
-    ) {
-        items(accountStatements) { accountStatements ->
-            AccountCard(accountStatements)
-            Divider(thickness = 10.dp)
         }
     }
 }
